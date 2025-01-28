@@ -1,0 +1,25 @@
+The function should take a character pointer as an argument and return the length of the string it points to.
+
+Constraints:
+
+Do not use the array subscript operator ('[ ]'); instead, use the dereference operator ('*').
+Avoid using a numeric counter; instead, employ pointer arithmetic.
+Use assert to check that the pointer is not NULL.
+Study: Pay attention once more to the use of the const qualifier in the pointer parameter. What is the distinction between the following definitions?
+
+#include <stddef.h>
+#include <assert.h>
+size_t StringLength(const char* str)
+{
+    const char* test; /*Define a new pointer*/
+    test = str; /*the pointer *test and *str point to the same adress*/
+    /*str define to point char variables*/
+    assert(str != NULL); /*assert to verify that the pointer is not NULL*/
+    
+   
+    while (*test != '\0')
+    {
+        test++;
+    }
+    return test - str ;
+}
