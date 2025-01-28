@@ -1,0 +1,34 @@
+Given an array of integers, implement a function that shifts a consecutive initial segment of elements to the end of the array, with the remaining elements moved to the left.
+
+For example, for the array [3, 7, 2, 8, 5, 9, 1, 4], if the first 3 elements (i.e., [3, 7, 2]) are moved to the end, the resulting array should be [8, 5, 9, 1, 4, 3, 7, 2].
+
+The function should receive the following arguments:
+
+An array of integers (array)
+The size of the array (size)
+The number of elements in the initial segment to move (count)
+
+Constraints:
+
+The array's elements should be moved in place
+Do not use an auxiliary array
+Only a single temporary integer variable may be used
+
+Solution:
+
+void MoveElements(int array[], size_t size, size_t count)
+{
+    int i;
+    int j;
+    int x;
+    
+    for (i=0; i<count; i++)
+    {
+        x = array[0]; /* Store the first element of the array in the variable x*/
+        for (j=1; j<size; j++)
+        {
+            array[j-1] = array[j]; /*Shift left all the elements*/
+        }
+        array[size-1] = x; /*Insert the first element of the array, in to the end*/
+    }
+}
