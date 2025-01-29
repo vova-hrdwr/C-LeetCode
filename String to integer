@@ -1,0 +1,26 @@
+Implement a function that converts a string into an integer. A comprehensive explanation of the requirements can be found in the man page for the atoi function (ASCII to integer).
+Constraints:
+
+Do not use the array subscript operator ([ ]); instead, utilize the dereference operator (*).
+Use assert to ensure that the pointer is not NULL.
+
+#include <assert.h>
+#include <stddef.h>
+int StringToInteger(const char* str)
+{
+    int res = 0;
+    int n = 1;
+    assert (str != NULL);
+    if (*str == 45) /*Check the first character: If it's a negative sign ('-'), then set a flag variable to -1.*/
+    {
+        n = -1;
+        str++;
+    }
+    while ( 48 <= *str && *str <= 57 ) /*Stop iterating the string when a non-digit character has been found.*/
+        /*ASCII numbers 0-9 span 48-57 respectively*/
+    {
+        res = res*10 + (*str-48); /*Char numbers begin at 48*/
+        str++;
+    }    
+    return res*n;   
+}
