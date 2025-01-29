@@ -1,0 +1,21 @@
+Given two character pointers, the function should compare the strings they point to lexicographically (case-sensitive). It should return a negative integer, zero, or a positive integer, depending on whether the first string is less than, equal to, or greater than the second string, respectively.
+For instance, the string "Bag" is considered less than the string "Bug," so the function should return a negative integer in this case.
+Please note that uppercase and lowercase letters are distinct ('A' != 'a').
+
+#include <assert.h>
+#include <stddef.h>
+int StringCompare(const char* str1, const char* str2) /*Reminder: const char* str - Declares a pointer to a constant char*/
+{
+    assert (str1 != NULL);
+    assert (str2 != NULL);
+    while (*str1 == *str2)
+    {
+        if (*str1=='\0' && *str2=='\0') /* '\0' in ASCII table is equal to 0, the smallest positive number*/
+        {
+            return 0;
+        }
+        str1++;
+        str2++;
+    }
+    return *str1 - *str2;
+}
